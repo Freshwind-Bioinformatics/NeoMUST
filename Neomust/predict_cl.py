@@ -207,8 +207,8 @@ def predict(test_file, blosum62_file, mhc_aa_file, neomust_model_file, rank_data
     model = CGC(input_size=256, num_specific_experts=4, num_shared_experts=4, experts_out=64, experts_hidden=128,
                 towers_hidden=32)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = nn.DataParallel(model)
     if torch.cuda.device_count() > 1:
-        model = nn.DataParallel(model)
         model = model.cuda()
     model.load_state_dict(torch.load(neomust_model_file, map_location=device), strict=False)
     model.eval()
