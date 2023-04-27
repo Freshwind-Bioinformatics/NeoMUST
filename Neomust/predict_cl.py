@@ -187,7 +187,7 @@ def rank(rank_database_path, pseudo, df):
     rank_df = pd.read_csv(os.path.join(rank_database_path, pseudo + '.csv.gz'))
     df_ = pd.DataFrame(index=df.index)
     rank_el_list = []
-    for i in df['cgc_pre_task2']:
+    for i in df['neomust_el']:
         rank_el_list.append(rank_df.at[rank_df.index[(rank_df['el'] - i).abs().argmin()], 'rank_el'])
     df_['rank_el'] = rank_el_list
     return df_
