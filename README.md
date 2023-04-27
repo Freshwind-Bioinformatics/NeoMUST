@@ -56,7 +56,7 @@ Command:
 
 NeoMUST uses a **csv** file as input, with the header including **hla** and **peptide**. (required)
 
-For example (test/demo_data.csv):
+For example (Test/demo_data.csv):
 
     sample_id,hla,peptide,hit
     3,A*01:01,ASSFLKSFY,0
@@ -72,7 +72,7 @@ For example (test/demo_data.csv):
 NeoMUST takes a **csv** file as output, with the header including **neomust_ba**, **neomust_el** and **neomust_el_rank**
 .
 
-For example (test/output.csv):
+For example (Test/output.csv):
 
     sample_id,hla,peptide,hit,neomust_ba,neomust_el,neomust_el_rank
     3,A*01:01,ASSFLKSFY,0,132.2011260986328,0.9949237704277039,0.0188624538908844
