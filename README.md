@@ -6,7 +6,9 @@ NeoMUST: an Accurate and Efficient Multi-Task Learning Model for Neoantigen Pres
 
 Contract: hui.yao@freshwindbiotech.com
 
-## Requirements
+## Installation
+
+### Dependencies
 
 * python == 3.9.12
 * mhcnames == 0.4.8
@@ -14,9 +16,7 @@ Contract: hui.yao@freshwindbiotech.com
 * pandas == 1.2.0
 * torch == 1.11.0
 
-####   * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
-
-## Installation
+#### * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
 
 Command:
 
@@ -24,7 +24,7 @@ Command:
     conda activate neomust
     pip install -r ./requirements.txt
 
-####   * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
+#### * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
 
 ## Usage
 
