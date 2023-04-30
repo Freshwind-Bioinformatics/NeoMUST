@@ -1,6 +1,7 @@
 import os
 import re
 import torch
+import tarfile
 import mhcnames
 import argparse
 import numpy as np
@@ -183,8 +184,9 @@ class CGC(nn.Module):
         return final_output1, final_output2
 
 
-def rank(rank_database_path, pseudo, df):
-    rank_df = pd.read_csv(os.path.join(rank_database_path, pseudo + '.csv.gz'))
+def rank(tar_dict, pseudo, df):
+    tar = [i for i, j in tar_dict.items() if pseudo + '.pkl.bz2' in j]
+    rank_df = pd.read_pickle(tar[0].extractfile(pseudo + '.pkl.bz2'), compression='bz2')
     df_ = pd.DataFrame(index=df.index)
     rank_el_list = []
     for i in df['neomust_el']:
@@ -233,11 +235,15 @@ def predict(test_file, blosum62_file, mhc_aa_file, neomust_model_file, rank_data
         for i in range(0, df.shape[0], max_len):
             pseudo_list.append(pseudo)
             df_list.append(df.iloc[i:i + max_len, :])
+    tar_dict = dict()
+    for i in os.listdir(rank_database_path):
+        tar = tarfile.open(os.path.join(rank_database_path, i), "r:*")
+        tar_dict[tar] = tar.getnames()
     t = args.max_task
     pool = Pool(t)
     result_list = []
     for pseudo, df in zip(pseudo_list, df_list):
-        result_list.append(pool.apply_async(rank, (rank_database_path, pseudo, df)))
+        result_list.append(pool.apply_async(rank, (tar_dict, pseudo, df)))
     pool.close()
     pool.join()
     df_concat = pd.concat([i.get() for i in result_list])
