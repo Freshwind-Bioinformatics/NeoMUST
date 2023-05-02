@@ -59,7 +59,7 @@ Command:
 
 Command:
 
-    python predict_cl.py --input ./Test/demo_data.csv --blosum62 ./Data/BLOSUM62.txt --mhc_aa ./Data/allele_sequences.csv --neomust_model ./Neomust/model/neomust_model.pt --rank_database ./Data/rank_database_lite --output ./Test/output.csv
+    python ./Neomust/predict_cl.py --input ./Test/demo_data.csv --blosum62 ./Data/BLOSUM62.txt --mhc_aa ./Data/allele_sequences.csv --neomust_model ./Neomust/model/neomust_model.pt --rank_database ./Data/rank_database_lite --output ./Test/output.csv
 
 ## Input
 
