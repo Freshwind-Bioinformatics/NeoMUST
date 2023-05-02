@@ -8,6 +8,15 @@ Contract: hui.yao@freshwindbiotech.com
 
 ## Installation
 
+### Docker(Recommend)
+
+Command:
+
+    docker pull freshwindbioinformatics/neomust:v1
+    docker run -it --gpus all neomust:v1 /bin/bash
+
+####  * Note : The parameter "--gpus" requires docker version higher than 19.03.
+
 ### Dependencies
 
 * python == 3.9.12
@@ -16,7 +25,7 @@ Contract: hui.yao@freshwindbiotech.com
 * pandas == 1.2.0
 * torch == 1.11.0
 
-#### * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
+####  * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
 
 Command:
 
@@ -24,7 +33,7 @@ Command:
     conda activate neomust
     pip install -r ./requirements.txt
 
-#### * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
+####  * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
 
 ## Usage
 
