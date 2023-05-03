@@ -10,9 +10,14 @@ Contract: hui.yao@freshwindbiotech.com
 
 ### Docker(Recommend)
 
-Command:
+The Installation of Docker can be seen in https://docs.docker.com/
+
+Pull the image of neomust from dockerhub:
 
     docker pull freshwindbioinformatics/neomust:v1
+
+Run the image in bash:
+
     docker run -it --gpus all neomust:v1 /bin/bash
 
 ####  * Note : The parameter "--gpus" requires docker version higher than 19.03.
@@ -55,7 +60,7 @@ Command:
           --num_workers INT: num_workers in pytorch Dataloader (default: 0)
           --pin_memory BOOL: pin_memory in pytorch Dataloader (default: False)
           --max_len INT: Maximum length per task to be split (default: 50000)
-          --max_task INT: Maximum number of parallel tasks (default: Number of cores in your CPU)
+          --max_task INT: Maximum number of parallel tasks (default: 4)
 
 Command:
 
@@ -101,4 +106,9 @@ neomust_el_rank : Rank of EL predicted by the NeoMUST in the rank database.
 ## Note
 
 Due to space limitation, we have created rank_database_lite for benchmark and test data, the full version of
-rank_database can be downloaded from (link).
+rank_database can be downloaded from the docker image.
+
+Command:
+
+    docker pull freshwindbioinformatics/neomust:v1
+    docker cp -r neomust:/workspace/Data/rank_database_lite /path/on/host
