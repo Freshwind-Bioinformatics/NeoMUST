@@ -8,7 +8,7 @@ Contract: hui.yao@freshwindbiotech.com
 
 ## Installation
 
-### Docker(Recommend)
+### Docker (Recommend)
 
 The Installation of Docker can be seen in https://docs.docker.com/
 
@@ -56,14 +56,15 @@ Command:
           --output STRING: The output file (*.csv)
 
     Optional:
-          --batch_size INT: batch_size in pytorch Dataloader (default: 2048)
+          --batch_size INT: batch_size in pytorch Dataloader (default: 1024)
           --num_workers INT: num_workers in pytorch Dataloader (default: 0)
           --pin_memory BOOL: pin_memory in pytorch Dataloader (default: False)
           --max_len INT: Maximum length per task to be split (default: 50000)
-          --max_task INT: Maximum number of parallel tasks (default: 4)
+          --max_task INT: Maximum number of parallel tasks (default: 2)
 
 Command:
 
+    cd workspace  # If using docker, run this line first.
     python ./Neomust/predict_cl.py --input ./Test/demo_data.csv --blosum62 ./Data/BLOSUM62.txt --mhc_aa ./Data/allele_sequences.csv --neomust_model ./Neomust/model/neomust_model.pt --rank_database ./Data/rank_database_lite --output ./Test/output.csv
 
 ## Input
