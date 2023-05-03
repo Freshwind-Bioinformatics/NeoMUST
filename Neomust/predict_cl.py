@@ -21,11 +21,11 @@ parser.add_argument('--neomust_model', type=str, required=True, help='The traine
 parser.add_argument('--rank_database', type=str, required=True, help='The Rank database path (/path)')
 parser.add_argument('--output', type=str, required=True, help='The output file (*.csv)')
 
-parser.add_argument('--batch_size', default=2048, type=int, help='batch_size in pytorch Dataloader')
+parser.add_argument('--batch_size', default=1024, type=int, help='batch_size in pytorch Dataloader')
 parser.add_argument('--num_workers', default=0, type=int, help='num_workers in pytorch Dataloader')
 parser.add_argument('--pin_memory', default=False, type=bool, help='pin_memory in pytorch Dataloader')
 parser.add_argument('--max_len', default=50000, type=int, help='Maximum length per task to be split')
-parser.add_argument('--max_task', default=4, type=int, help='Maximum number of parallel tasks')
+parser.add_argument('--max_task', default=2, type=int, help='Maximum number of parallel tasks')
 args = parser.parse_args()
 
 
@@ -186,7 +186,7 @@ class CGC(nn.Module):
 
 
 def rank(rank_database_path, pseudo, df):
-    with open('./Data/query.pkl', 'rb') as f:
+    with open(f'{rank_database_path}/query.pkl', 'rb') as f:
         tquery_dict = pickle.load(f)
         f.close()
     name = [i for i, j in tquery_dict.items() if pseudo + '.pkl.bz2' in j]
