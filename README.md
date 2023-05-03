@@ -8,7 +8,9 @@ Contract: hui.yao@freshwindbiotech.com
 
 ## Installation
 
-### Docker (Recommend)
+There are two ways to install NeoMUST.
+
+### 1. Docker (Recommend)
 
 The Installation of Docker can be seen in https://docs.docker.com/
 
@@ -20,9 +22,11 @@ Run the image in bash:
 
     docker run -it --gpus all neomust:v1 /bin/bash
 
-####  * Note : The parameter "--gpus" requires docker version higher than 19.03.
+#### * Note : The parameter "--gpus" requires docker version higher than 19.03.
 
-### Dependencies
+### 2. Conda and pip
+
+#### Dependencies
 
 * python == 3.9.12
 * mhcnames == 0.4.8
@@ -30,7 +34,7 @@ Run the image in bash:
 * pandas == 1.2.0
 * torch == 1.11.0
 
-####  * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
+#### * Note : If you want to use the GPU, you should install CUDA and cuDNN version compatible with the pytorch version. [Version Searching](https://pytorch.org/)
 
 Command:
 
@@ -38,7 +42,7 @@ Command:
     conda activate neomust
     pip install -r ./requirements.txt
 
-####  * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
+#### * Note : How to download and install conda? [Documentation](https://docs.conda.io/en/latest/miniconda.html).
 
 ## Usage
 
