@@ -1,7 +1,7 @@
-import copy
 import os
 import re
 import torch
+import pickle
 import tarfile
 import mhcnames
 import argparse
@@ -25,7 +25,7 @@ parser.add_argument('--batch_size', default=2048, type=int, help='batch_size in 
 parser.add_argument('--num_workers', default=0, type=int, help='num_workers in pytorch Dataloader')
 parser.add_argument('--pin_memory', default=False, type=bool, help='pin_memory in pytorch Dataloader')
 parser.add_argument('--max_len', default=50000, type=int, help='Maximum length per task to be split')
-parser.add_argument('--max_task', default=1, type=int, help='Maximum number of parallel tasks')
+parser.add_argument('--max_task', default=4, type=int, help='Maximum number of parallel tasks')
 args = parser.parse_args()
 
 
@@ -186,12 +186,12 @@ class CGC(nn.Module):
 
 
 def rank(rank_database_path, pseudo, df):
-    tar_dict = dict()
-    for i in os.listdir(rank_database_path):
-        tar = tarfile.open(os.path.join(rank_database_path, i), "r:*")
-        tar_dict[tar] = tar.getnames()
-    tar_ = [i for i, j in tar_dict.items() if pseudo + '.pkl.bz2' in j]
-    rank_df = pd.read_pickle(tar_[0].extractfile(pseudo + '.pkl.bz2'), compression='bz2')
+    with open('./Data/query.pkl', 'rb') as f:
+        tquery_dict = pickle.load(f)
+        f.close()
+    name = [i for i, j in tquery_dict.items() if pseudo + '.pkl.bz2' in j]
+    tar = tarfile.open(os.path.join(rank_database_path, 'rank_database_lite' + str(name[0]) + '.tar'), "r:*")
+    rank_df = pd.read_pickle(tar.extractfile(pseudo + '.pkl.bz2'), compression='bz2')
     df_ = pd.DataFrame(index=df.index)
     rank_el_list = []
     for i in df['neomust_el']:
@@ -232,7 +232,6 @@ def predict(test_file, blosum62_file, mhc_aa_file, neomust_model_file, rank_data
         cgc_pre_task2_list.extend(predictions2.cpu().view(-1).tolist())
     test_df['neomust_ba'] = cgc_pre_task1_list
     test_df['neomust_el'] = cgc_pre_task2_list
-
     max_len = args.max_len
     pseudo_list = []
     df_list = []
