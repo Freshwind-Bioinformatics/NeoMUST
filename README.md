@@ -20,7 +20,7 @@ Pull the image of neomust from dockerhub:
 
 Run the image in bash:
 
-    docker run -it --gpus all neomust:v1 /bin/bash
+    docker run -it --gpus all freshwindbioinformatics/neomust:v1 bash
 
 #### * Note : The parameter "--gpus" requires docker version higher than 19.03.
 
