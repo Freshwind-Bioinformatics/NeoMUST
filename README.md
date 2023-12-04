@@ -91,6 +91,7 @@ For example (Test/demo_data.csv):
 #### Output
 
 NeoMUST takes a **csv** file as output, with the header including **neomust_ba**, **neomust_el** and **neomust_el_rank**. 
+
 In the article, we use neomust_ba in TeSet-3, and neomust_el_rank in TeSet-1, TeSet-2, TeSet-1-Filtered, TeSet-2-Filtered and TeSet-4.
 
 For example (Test/output.csv):
