@@ -48,6 +48,8 @@ Command:
 
 Using NeoMUST for Prediction and Training NeoMUST with Your Own Data.
 
+Note : The data in the **rank_database_common** directory can be parsed by the **rank** function in **predict_cl.py**.
+
 ### Predict
 
     Usage: predict_cl.py [options]
