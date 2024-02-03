@@ -2,8 +2,8 @@
 
 ## Introduction
 
-NeoMUST: an Accurate and Efficient Multi-Task Learning Model for Neoantigen Presentation
-Publication: http://doi.org/10.26508/lsa.202302255
+NeoMUST: an Accurate and Efficient Multi-Task Learning Model for Neoantigen Presentation  
+Publication: http://doi.org/10.26508/lsa.202302255  
 Contract: hui.yao@freshwindbiotech.com
 
 ## Installation
@@ -175,6 +175,4 @@ Command:
 
 ## Citation
 
-Wang Ma, Jiawei Zhang, Hui Yao
-A multi-task model for neoantigen prediction.
-Life Science Alliance Jan 2024, 7 (4) e202302255; DOI: 10.26508/lsa.202302255
+Wang Ma, Jiawei Zhang, Hui Yao. "NeoMUST: an accurate and efficient multi-task learning model for neoantigen presentation" Life Science Alliance Jan 2024, 7 (4) e202302255; DOI: 10.26508/lsa.202302255
